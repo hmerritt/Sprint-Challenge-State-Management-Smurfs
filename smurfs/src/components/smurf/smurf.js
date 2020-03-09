@@ -1,15 +1,15 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 const Smurf = ({ smurf }) => {
-
+    
     const styles = makeStyles({
-      card: {
-        margin: "14px auto",
-        maxWidth: "650px"
-      }
-  })();
+        card: {
+            margin: "14px auto",
+            maxWidth: "650px"
+        }
+    })();
 
     return (
         <div className="smurf">

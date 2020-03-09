@@ -6,3 +6,9 @@ header {
 form {
     margin-bottom: 60px;
 }
+
+.analytics {
+    max-width: 700px;
+    margin: 50px auto;
+    margin-bottom: 80px;
+}

@@ -23,12 +23,15 @@ const Form = () => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
+        dispatch(addSmurf({
+            ...smurf,
+            age: Number(smurf.age)
+        }));
         setSmurf({
             name: "",
             age: 0,
             height: ""
         });
-        dispatch(addSmurf(smurf));
     }
 
     return (
