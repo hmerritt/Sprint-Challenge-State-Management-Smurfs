@@ -13,11 +13,30 @@ export const getSmurfs = () => dispatch =>
     axios
         .get("http://localhost:3333/smurfs")
         .then(res => {
-            console.log(res.data);
             dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
         })
         .catch(res => {
-            console.log(res);
             dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
+        });
+};
+
+
+export const POST_SMURF_START = "POST_SMURF_START";
+export const POST_SMURF_SUCCESS = "POST_SMURF_SUCCESS";
+export const POST_SMURF_FAILURE = "POST_SMURF_FAILURE";
+
+export const addSmurf = (smurf) => dispatch =>
+{
+    //  Start fetch
+    dispatch({ type: POST_SMURF_START, payload: smurf });
+
+    //  Get data from API
+    axios
+        .post("http://localhost:3333/smurfs", smurf)
+        .then(res => {
+            dispatch({ type: POST_SMURF_SUCCESS });
+        })
+        .catch(res => {
+            dispatch({ type: POST_SMURF_FAILURE });
         });
 };
