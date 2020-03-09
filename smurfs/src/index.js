@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { reducer } from "./reducers/";
 
+//  Create redux store
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
