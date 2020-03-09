@@ -19,12 +19,12 @@ const Smurfs = () => {
     return (
         <div className="smurfs">
             {
-                loading ? "Loading..." : ""
+                loading ? <Smurf smurf={{name: "Loading..."}} /> : ""
             }
             {
                 smurfs.map((smurf, key) => {
                     return <Smurf smurf={smurf} key={key} />
-                })
+                }).reverse()
             }
         </div>
     );
