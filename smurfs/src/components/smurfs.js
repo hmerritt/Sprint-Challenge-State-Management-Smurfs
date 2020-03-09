@@ -12,11 +12,15 @@ const Smurfs = () => {
         dispatch(getSmurfs());
     }, []);
 
-    //  Get smurfs from redux store
+    //  Get data from redux store
     const smurfs = useSelector(state => state.smurfs);
+    const loading = useSelector(state => state.isLoading);
 
     return (
         <div className="smurfs">
+            {
+                loading ? "Loading..." : ""
+            }
             {
                 smurfs.map((smurf, key) => {
                     return <Smurf smurf={smurf} key={key} />
