@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addSmurf } from "../actions/";
+import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
 
 const Form = () => {
-
     const dispatch = useDispatch();
 
     const [smurf, setSmurf] = useState({
         name: "",
-        age: 0,
+        age: null,
         height: ""
     });
 
@@ -23,16 +23,29 @@ const Form = () => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        dispatch(addSmurf({
-            ...smurf,
-            age: Number(smurf.age)
-        }));
+        dispatch(
+            addSmurf({
+                ...smurf,
+                age: Number(smurf.age)
+            })
+        );
         setSmurf({
             name: "",
-            age: 0,
+            age: null,
             height: ""
         });
-    }
+    };
+
+    const styles = makeStyles({
+        input: {
+            margin: "0px 5px"
+        },
+        button: {
+            width: "100%",
+            height: "40px",
+            margin: "10px 0",
+        }
+    })();
 
     return (
         <form onSubmit={handleSubmit}>
@@ -41,6 +54,7 @@ const Form = () => {
                 name="name"
                 label="Name"
                 variant="outlined"
+                className={styles.input}
                 value={smurf.name}
                 onChange={handleChange}
                 required
@@ -50,6 +64,7 @@ const Form = () => {
                 name="age"
                 label="Age"
                 variant="outlined"
+                className={styles.input}
                 value={smurf.age}
                 onChange={handleChange}
                 required
@@ -59,11 +74,19 @@ const Form = () => {
                 name="height"
                 label="Height"
                 variant="outlined"
+                className={styles.input}
                 value={smurf.height}
                 onChange={handleChange}
                 required
             />
-            <Button type="submit" variant="contained" color="primary">Add Smurf</Button>
+            <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={styles.button}
+            >
+                Add Smurf
+            </Button>
         </form>
     );
 };
