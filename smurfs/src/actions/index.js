@@ -1,22 +1,23 @@
+import axios from "axios";
 
-export const GET_SMURFS_START = "GET_SMURFS_START";
-export const GET_SMURFS_SUCCESS = "GET_SMURFS_SUCCESS";
-export const GET_SMURFS_FAILURE = "GET_SMURFS_FAILURE";
+export const FETCH_SMURFS_START = "FETCH_SMURFS_START";
+export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
+export const FETCH_SMURFS_FAILURE = "FETCH_SMURFS_FAILURE";
 
 export const getSmurfs = () => dispatch =>
 {
     //  Start fetch
-    dispatch({ type: GET_SMURFS_START });
+    dispatch({ type: FETCH_SMURFS_START });
 
     //  Get data from API
     axios
         .get("http://localhost:3333/smurfs")
         .then(res => {
-            console.log(res);
-            dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data });
+            console.log(res.data);
+            dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
         })
         .catch(res => {
             console.log(res);
-            dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data });
+            dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
         });
 };

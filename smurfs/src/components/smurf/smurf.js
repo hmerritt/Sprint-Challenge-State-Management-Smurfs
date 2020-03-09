@@ -1,9 +1,9 @@
 import React from "react";
 
-const Smurf = () => {
+const Smurf = ({ smurf }) => {
     return (
         <div className="smurf">
-            Sup
+            {smurf.name}
         </div>
     );
 }
